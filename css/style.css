@@ -551,7 +551,7 @@ body {
 }
 .post .comment-count {
   float: right;
-  display: none;
+  display: inline;
   text-indent: 0.15em;
 }
 .post .comment-count:before {
@@ -667,8 +667,10 @@ body {
   content: "\e008";
   padding-right: 0.3em;
 }
-.post .post-share {
-  display: none;
+.post .post-share::after {
+  content: ' ';
+  display: block;
+  clear: both;
 }
 /* for archive page starts*/
 .post-archive {
