@@ -3,70 +3,70 @@
 <p>基本操作命令:</p>
 </blockquote>
 <p>ls #以默认方式显示当前目录文件列表<br>ls –a #显示所有文件包括隐藏文件<br>ls –l #显示文件属性，包括大小，日期，符号连接，是否可读写及是否可执行<br>ls –color=never *.so &gt; obj #不显示文字颜色,将所有so文件记录到obj文件中</p>
-<p>###</p>
+<hr>
 <p>cd dir #切换到当前目录下的dir目录<br>cd / #切换到根目录<br>cd .. #切换到到上一级目录<br>cd ../.. #切换到上二级目录<br>cd ~ #切换到用户目录，比如是root用户，则切换到/root下</p>
-<p>###</p>
+<hr>
 <p>rm file #删除某一个文件<br>rm -fr dir #删除当前目录下叫dir的整个目录</p>
-<p>###</p>
+<hr>
 <p>cp source target #将文件source 复制为 target<br>cp /root/source . #将/root下的文件source复制到当前目录<br>cp –av soure_dir target_dir #将整个目录复制，两目录完全一样<br>cp –fr source_dir target_dir </p>
 <p>#将整个目录复制，并且是以非链接方式复制，当source目录带有符号链接时，两个目录不相同</p>
-<p>###</p>
+<hr>
 <p>mv source target #将文件source更名为target</p>
-<p>###</p>
+<hr>
 <p>diff dir1 dir2 #比较目录1与目录2的文件列表是否相同，但不比较文件的实际内容，不同则列出<br>diff file1 file2 #比较文件1与文件2的内容是否相同，如果是文本格式的文件，则将不相同的内容显示，如果是二进制代码则只表示两个文件是不同的<br>comm file1 file2 #比较文件，显示两个文件不相同的内容</p>
-<p>###</p>
+<hr>
 <p>echo message #显示一串字符<br>echo “message message2” #显示不连续的字符串<br>cat:<br>cat file #显示文件的内容，和DOS的type相同<br>cat file | more #显示文件的内容并传输到more程序实现分页显示，使用命令less file可实现相同的功能<br>more #分页命令，一般通过管道将内容传给它，如ls | more</p>
-<p>###</p>
+<hr>
 <p>export LC_ALL=zh_CN.GB2312 #将环境变量LC_ALL的值设为zh_CN.GB2312<br>export DISPLAY=0:0 #通过该设置，当前字符终端下运行的图形程序可直接运行于Xserver<br>date #显示当前日期时间<br>date -s 20:30:30 #设置系统时间为20:30:30<br>date -s 2002-3-5 #设置系统时期为2003-3-5<br>clock –r #对系统Bios中读取时间参数<br>clock –w #将系统时间(如由date设置的时间)写入Bios</p>
-<p>###</p>
+<hr>
 <p>eject #umout掉CDROM并将光碟弹出，但cdrom不能处于busy的状态，否则无效</p>
-<p>###</p>
+<hr>
 <p>du #计算当前目录的容量<br>du -sm /root #计算/root目录的容量并以M为单位<br>find -name /path file #在/path目录下查找看是否有文件file<br>grep -ir “chars” #在当前目录的所有文件查找字串chars，并忽略大小写，-i为大小写，-r为下一级目录</p>
-<p>###</p>
+<hr>
 <p>vi file #编辑文件file<br>vi 原基本使用及命令：<br>输入命令的方式为先按ctrl+c， 然后输入:x(退出),:x!(退出并保存) :w(写入文件),:w!(不询问方式写入文件）， :r file(读文件file) ,:%s/oldchars/newchars/g(将所有字串oldchars换成newchars) 这一类的命令进行操作</p>
-<p>###</p>
+<hr>
 <p>man ls #读取关于ls命令的帮助<br>man ls | grep color #读取关于ls命令的帮助并通过grep程序在其中查找color字串</p>
-<p>### </p>
+<hr>
 <p>startx #运行Linux图形有环境<br>Xfree86 #只运行X图形server</p>
-<p>###</p>
+<hr>
 <p>reboot #重新启动计算机<br>halt #关闭计算机<br>init 0 #关闭所有应用程序和服务，进入纯净的操作环境<br>init 1 #重新启动应用及服务<br>init 6 #重新启动计算机</p>
-<p>###</p>
+<hr>
 <blockquote>
 <p>扩展命令</p>
 </blockquote>
 <p>tar xfzv file.tgz #将文件file.tgz解压<br>tar xfzv file.tgz -C target_path #将文件file.tgz解压到target_path目录下<br>tar cfzv file.tgz source_path #将文件source_path压缩为file.tgz<br>tar c directory &gt; directory.tar #将目录directory打包成不压缩的directory.tar<br>gzip directory.tar #将覆盖原文件生成压缩的 directory.tar.gz<br>gunzip directory.tar.gz #覆盖原文件解压生成不压缩的 directory.tar。<br>tar xf directory.tar #可将不压缩的文件解包</p>
-<p>###</p>
+<hr>
 <p>dmesg #显示kernle启动及驱动装载信息<br>uname #显示操作系统的类型<br>uname -R #显示操作系统内核的version</p>
-<p>###</p>
+<hr>
 <p>strings file 显示file文件中的ASCII字符内容</p>
-<p>###</p>
+<hr>
 <p>rpm -ihv program.rpm #安装程序program并显示安装进程<br>rpm2targz program.rpm program.tgz #将rpm格式的文件转换成tarball格式</p>
 <p>su root #切换到超级用户<br>sulogin /dev/tty4 #在tty4即alt+F4终端等待用户登陆或直接登陆开启一个shell<br>chmod a+x file #将file文件设置为可执行，脚本类文件一定要这样设置一个，否则得用bash file才能执行<br>chmod 666 file #将文件file设置为可读写<br>chown user /dir #将/dir目录设置为user所有</p>
-<p>###</p>
+<hr>
 <p>mknod /dev/hda1 b 3 1 #创建块设备hda1，主设备号为3，从设备号为1，即master硬盘的的第一个分区<br>mknod /dev/tty1 c 4 1 #创建字符设备tty1,主设备号为4，众设备号为1，即第一个tty终端</p>
-<p>###</p>
+<hr>
 <p>touch /tmp/running #在/tmp下创建一个临时文件running，重新启动后消失</p>
-<p>###</p>
+<hr>
 <p>sleep 9 #系统挂起9秒钟的时间</p>
-<p>###</p>
+<hr>
 <p>lpd stop 或 cups stop #停止打印服务程序<br>lpd start 或 cups start #启动打印服务程序<br>lpd restart 或 cups restart #重新启动打印服务程序<br>lpr file.txt #打印文件file.txt</p>
-<p>###</p>
+<hr>
 <p>fdisk /dev/hda #就像执行了dos的fdisk一样<br>cfdisk /dev/hda #比fdisk界面稍为友好些<br>mount -t ext2 /dev/hda1 /mnt #把/dev/hda1装载到 /mnt目录<br>df #显示文件系统装载的相关信息<br>mount -t iso9660 /dev/cdrom /mnt/cdrom #将光驱加载到/mnt/cdrom目录<br>mount-t smb //192.168.1.5/sharedir /mnt -o username=tomlinux,password=tomlinux #将windows的的共享目录加载到/mnt/smb目录，用户名及密码均为tomlinux<br>mount -t nfs 192.168.1.1:/sharedir /mnt #将nfs服务的共享目录sharedir加载到/mnt/nfs目录<br>umount /mnt #将/mnt目录卸载，/mnt目录必须处于空闲状态<br>umount /dev/hda1 #将/dev/hda1设备卸载，设备必须处于空亲状态<br>sync #将cache中的内容与磁盘同步，在Linux中复制文件，一般要系统空闲才去写文件<br>e2fsck /dev/hda1 #检查/dev/hda1是否有文件系统错误，提示修复方式<br>e2fsck -p /dev/hda1#检查/dev/hda1是否有错误，如果有则自动修复<br>e2fsck -y /dev/hda1#检查错误，所有提问均于yes方式执行<br>e2fsck -c /dev/hda1#检查磁盘是否有坏区<br>mkfs /dev/hda1 #格式化/dev/hda1为ext2格式<br>mkfs.minix /dev/hda1 #格式化/dev/hda1为minix格式文件系统<br>mfks /dev/hda9 #格工化/dev/hda9为Linux swap格式<br>swapon /dev/hda9 #将swap分区装载当作内存来用</p>
-<p>###</p>
+<hr>
 <p>lilo #运行lilo程序，程序自动查找/etc/lilo.conf并按该配置生效<br>lilo -C /root/lilo.conf #lilo程序按/root/lilo.conf配置生效<br>grub #在Linux shell状态下运行boot loader设置程序<br>grub-install #安装grub磁盘引导程序，成功后升级内核无须像lilo一样要重新启动系统，只需修改/etc/grub.conf即可实现新引导配置<br>rdev bzImage #显示kernel的根分区信息<br>rdev bzImage /dev/hda1 #将kernel的根分区设置为/dev/hda1，这在没有lilo等引导程序的系统中非常重要.</p>
-<p>###</p>
+<hr>
 <p>dd if=/dev/fd0 of=floppy.fd #将软盘的内容复制成一个镜像，功能与旧石器时代常用的hd-copy相同<br>dd if=/dev/zero of=root.ram bs=1024,count=1024 #生成一个大小为1M的块设备，可以把它当作硬盘的一个分区来用<br>mkfs root.ram #将块设备格式化为ext2格式<br>dd if=root.ram of=/dev/ram0 #将init.rd格式的root.ram的内容导入内存<br>mount /dev/ram0 /mnt #ramdisk /dev/ram0装载到/mnt 目录</p>
-<p>###</p>
+<hr>
 <p>gcc hello.c #将hello.c编译成名为a.out二进制执行文件<br>gcc hello.c -o hello #将hello.c编译成名为hello的二进制执行文件<br>gcc -static -o hello hello.c #将hello.c编译成名为hello的二进制静态执行文件<br>ldd program #显示程序所使用了哪些库<br>objcopy -S program #将程序中的符号表及无用的调试信息去掉，可以小很多</p>
-<p>###</p>
+<hr>
 <p>strace netscape #跟踪程序netscape的执行，看调用的库，环境变量设置，配置文件，使用的设备，调用的其它应用程序等，在strace下，程序干了什么东东一目了然。<br>ps #显示当前系统进程信息<br>ps –ef #显示系统所有进程信息<br>kill -9 500 #将进程编号为500的程序干掉<br>killall -9 netscape #将所有名字为netscape的程序杀死，kill不是万能的，对僵死的程序则无效。<br>top #显示系统进程的活动情况，按占CPU资源百分比来分<br>free #显示系统内存及swap使用情况<br>time program #在program程序结束后，将计算出program运行所使用的时间</p>
-<p>###</p>
+<hr>
 <p>chroot . #将根目录切换至当前目录,调试新系统时使用<br>chroot /tomlinux #将根目录切换至/tomlinux目录<br>chroot /tomlinux sbin/init #将根目录切换至/tomlinux并执行sbin/init<br>adduser id #增加一个叫id的用户<br>userdel id #增除叫id的用户<br>userlist #显示已登陆的用户列表<br>passwd id #修改用户id的密码<br>passwd -d root #将root用户的密码删除<br>chown id /work #指定/work目录为id用户所拥有</p>
-<p>###</p>
+<hr>
 <p>ifconfig eth0 192.168.1.1 netmask 255.255.255.0 #设置网卡1的地址192.168.1.1，掩码为255.255.255.0，不写netmask参数则默认为255.255.255.0<br>ifconfig eth0:1 192.168.1.2 #捆绑网卡1的第二个地址为192.168.1.2<br>ifconfig eth0:x 192.168.1.x #捆绑网卡1的第二个地址为192.168.1.x<br>ifconfig down eth1 #关闭第二块网卡，使其停止工作<br>hostname -F tomlinux.com #将主机名设置为tomlinux.com<br>route #显示当前路由设置情况<br>route add default gw 192.168.1.1 metric 1 #设置192.168.1.1为默认的路由<br>route del default #将默认的路由删除<br>dhcp #启动dhcp服务<br>dhclient #启动dhcp终端并自动获取IP地址<br>ping 163.com #测试与163.com的连接<br>ping 202.96.128.68 #测试与IP 202。96.128.68的连接</p>
-<p>###</p>
-<p>probe rtl8139 #检查驱动程序rtl8139.o是否正常工作<br>lsmod #显示已装载的驱动程序<br>insmod rtl8139.o #装载驱动程序rtl8139.o<br>insmod sb.o io=0x280 irq=7 dma=3 dma16=7 mpu_io=330 #装载驱动程序并设置相关的irq,dma参数<br>rmmod rtl8139 #删除名为rtl8139的驱动模块<br>gpm -k #停止字符状态下的mouse服务<br>gpm -t ps2 #在字符状态下以ps2类型启动mouse的服务</p>
-<p>###</p>
-<p>telnet 192.168.1.1 #登陆IP为192.168.1.1的telnet服务器<br>telnet iserver.com #登陆域名为iserver.com的telnet服务器<br>ftp 192.168.1.1 或 ftp iserver.com #登陆到ftp服务</p>
-<p>###Linux开发中的常用命令(cygwin环境也同样适用)</p>
-</div><div class="tags"></div><div class="post-share"></div><div class="post-nav"><a href="/2017/06/28/hello-world/" class="next">Hello World</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/cygwin常用命令收集/">cygwin常用命令收集</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/28/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://ruyuanyuan.github.io" title="oo" target="_blank">oo</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">海阔天空.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script></body></html>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">probe rtl8139 <span class="comment">#检查驱动程序rtl8139.o是否正常工作</span></div><div class="line">lsmod <span class="comment">#显示已装载的驱动程序</span></div><div class="line">insmod rtl8139.o <span class="comment">#装载驱动程序rtl8139.o</span></div><div class="line">insmod sb.o io=0x280 irq=7 dma=3 dma16=7 mpu_io=330 <span class="comment">#装载驱动程序并设置相关的irq,dma参数</span></div><div class="line">rmmod rtl8139 <span class="comment">#删除名为rtl8139的驱动模块</span></div><div class="line">gpm -k <span class="comment">#停止字符状态下的mouse服务</span></div><div class="line">gpm -t ps2 <span class="comment">#在字符状态下以ps2类型启动mouse的服务</span></div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">telnet 192.168.1.1 <span class="comment">#登陆IP为192.168.1.1的telnet服务器</span></div><div class="line">telnet iserver.com <span class="comment">#登陆域名为iserver.com的telnet服务器</span></div><div class="line">ftp 192.168.1.1 或 ftp iserver.com <span class="comment">#登陆到ftp服务</span></div></pre></td></tr></table></figure>
+<p><em>*</em>Linux开发中的常用命令(cygwin环境也同样适用)</p>
+</div><div class="tags"></div><div class="post-share"></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/cygwin常用命令收集/">cygwin常用命令收集</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://ruyuanyuan.github.io" title="oo" target="_blank">oo</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">海阔天空.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script></body></html>
