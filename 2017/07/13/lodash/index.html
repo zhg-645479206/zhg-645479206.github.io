@@ -27,13 +27,40 @@
 <blockquote>
 <p>In functional programming, an iteratee is a composable abstraction for incrementally processing sequentially presented chunks of input data in a purely functional fashion. With iteratees, it is possible to lazily transform how a resource will emit data, for example, by converting each chunk of the input to uppercase as they are retrieved or by limiting the data to only the five first chunks without loading the whole input data into memory. Iteratees are also responsible for opening and closing resources, providing predictable resource management. ———— iteratee, wikipedia</p>
 </blockquote>
-<p><code><br>// The <code>lodash/map</code> iteratee receives three arguments:<br>// (value, index|key, collection)<br>_.map([‘6’, ‘8’, ‘10’], parseInt);<br>// → [6, NaN, 2]</code></p>
-<p>// The <code>lodash/fp/map</code> iteratee is capped at one argument:<br>// (value)<br>fp.map(parseInt)([‘6’, ‘8’, ‘10’]);<br>// → [6, 8, 10]</p>
-<p>// <code>lodash/padStart</code> accepts an optional <code>chars</code> param.<br>_.padStart(‘a’, 3, ‘-‘)<br>// → ‘–a’</p>
-<p>// <code>lodash/fp/padStart</code> does not.<br>fp.padStart(3)(‘a’);<br>// → ‘  a’<br>fp.padCharsStart(‘-‘)(3)(‘a’);<br>// → ‘–a’</p>
-<p>// <code>lodash/filter</code> is data-first iteratee-last:<br>// (collection, iteratee)<br>var compact = <em>.partial(</em>.filter, _, Boolean);<br>compact([‘a’, null, ‘c’]);<br>// → [‘a’, ‘c’]</p>
-<p>// <code>lodash/fp/filter</code> is iteratee-first data-last:<br>// (iteratee, collection)<br>var compact = fp.filter(Boolean);<br>compact([‘a’, null, ‘c’]);<br>// → [‘a’, ‘c’]<br></p>
-<p>在 React + Webpack + Babel(ES6) 的开发环境中，使用 Lodash 需要安装插件 <a href="https://www.npmjs.com/package/babel-plugin-lodash" target="_blank" rel="external">babel-plugin-lodash</a> 并更新 Babel 配置文件：</p>
+<pre><code>// The `lodash/map` iteratee receives three arguments:
+// (value, index|key, collection)
+_.map([&apos;6&apos;, &apos;8&apos;, &apos;10&apos;], parseInt);
+// → [6, NaN, 2]
+
+// The `lodash/fp/map` iteratee is capped at one argument:
+// (value)
+fp.map(parseInt)([&apos;6&apos;, &apos;8&apos;, &apos;10&apos;]);
+// → [6, 8, 10]
+
+
+// `lodash/padStart` accepts an optional `chars` param.
+_.padStart(&apos;a&apos;, 3, &apos;-&apos;)
+// → &apos;--a&apos;
+
+// `lodash/fp/padStart` does not.
+fp.padStart(3)(&apos;a&apos;);
+// → &apos;  a&apos;
+fp.padCharsStart(&apos;-&apos;)(3)(&apos;a&apos;);
+// → &apos;--a&apos;
+
+
+// `lodash/filter` is data-first iteratee-last:
+// (collection, iteratee)
+var compact = _.partial(_.filter, _, Boolean);
+compact([&apos;a&apos;, null, &apos;c&apos;]);
+// → [&apos;a&apos;, &apos;c&apos;]
+
+// `lodash/fp/filter` is iteratee-first data-last:
+// (iteratee, collection)
+var compact = fp.filter(Boolean);
+compact([&apos;a&apos;, null, &apos;c&apos;]);
+// → [&apos;a&apos;, &apos;c&apos;]
+</code></pre><p>在 React + Webpack + Babel(ES6) 的开发环境中，使用 Lodash 需要安装插件 <a href="https://www.npmjs.com/package/babel-plugin-lodash" target="_blank" rel="external">babel-plugin-lodash</a> 并更新 Babel 配置文件：</p>
 <p><code>npm install --save lodash
 npm install --save-dev babel-plugin-lodash</code></p>
 <p>更新 Babel 的配置文件 .babelrc</p>
