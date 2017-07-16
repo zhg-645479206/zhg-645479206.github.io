@@ -399,18 +399,16 @@
 <td style="text-align:center">为表达式后面的部分改变处理选项</td>
 </tr>
 <tr>
-<td>(?(exp)yes\</td>
-<td style="text-align:center">no)</td>
-<td>把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</td>
+<td>(?(exp)yes:no)</td>
+<td style="text-align:center">把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</td>
 </tr>
 <tr>
 <td>(?(exp)yes)</td>
 <td style="text-align:center">同上，只是使用空表达式作为no</td>
 </tr>
 <tr>
-<td>(?(name)yes\</td>
-<td style="text-align:center">no)</td>
-<td>如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no</td>
+<td>(?(name)yes:no)</td>
+<td style="text-align:center">如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no</td>
 </tr>
 <tr>
 <td>(?(name)yes)</td>
@@ -418,7 +416,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<hr>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><br></p>
+<ul>
 <li><a href="https://item.jd.com/11070361.html" target="_blank" rel="external">精通正则表达式(第3版)</a></li>
 <li><a href="https://msdn.microsoft.com/zh-cn/library/hs600312.aspx" target="_blank" rel="external">微软的正则表达式教程</a></li>
 <li><a href="http://msdn2.microsoft.com/zh-cn/library/system.text.regularexpressions.regex.aspx" target="_blank" rel="external">System.Text.RegularExpressions.Regex类(MSDN)</a></li>
