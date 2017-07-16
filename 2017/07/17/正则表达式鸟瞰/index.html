@@ -5,16 +5,45 @@
 </blockquote>
 <h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><p>学习正则表达式的最好方法是从例子开始，理解例子之后再自己对例子进行修改，实验。下面给出了不少简单的例子，并对它们作了详细的说明。<br>假设你在一篇英文小说里查找hi，你可以使用正则表达式hi。<br>这几乎是最简单的正则表达式了，它可以精确匹配这样的字符串：由两个字符组成，前一个字符是h,后一个是i。通常，处理正则表达式的工具会提供一个忽略大小写的选项，如果选中了这个选项，它可以匹配hi,HI,Hi,hI这四种情况中的任意一种。<br>不幸的是，很多单词里包含hi这两个连续的字符，比如him,history,high等等。用hi来查找的话，这里边的hi也会被找出来。如果要精确地查找hi这个单词的话，我们应该使用\bhi\b。<br>\b是正则表达式规定的一个特殊代码（好吧，某些人叫它元字符，metacharacter），代表着单词的开头或结尾，也就是单词的分界处。虽然通常英文的单词是由空格，标点符号或者换行来分隔的，但是\b并不匹配这些单词分隔字符中的任何一个，它只匹配一个位置。<br>假如你要找的是hi后面不远处跟着一个Lucy，你应该用\bhi\b.<em>\bLucy\b。<br>这里，.是另一个元字符，匹配除了换行符以外的任意字符。</em>同样是元字符，不过它代表的不是字符，也不是位置，而是数量——它指定<em>前边的内容可以连续重复使用任意次以使整个表达式得到匹配。因此，.</em>连在一起就意味着任意数量的不包含换行的字符。现在\bhi\b.*\bLucy\b的意思就很明显了：先是一个单词hi,然后是任意个任意字符(但不能是换行)，最后是Lucy这个单词。<br>如果同时使用其它元字符，我们就能构造出功能更强大的正则表达式。比如下面这个例子：<br>0\d\d-\d\d\d\d\d\d\d\d匹配这样的字符串：以0开头，然后是两个数字，然后是一个连字号“-”，最后是8个数字(也就是中国的电话号码。当然，这个例子只能匹配区号为3位的情形)。<br>这里的\d是个新的元字符，匹配一位数字(0，或1，或2，或……)。-不是元字符，只匹配它本身——连字符(或者减号，或者中横线，或者随你怎么称呼它)。<br>为了避免那么多烦人的重复，我们也可以这样写这个表达式：0\d{2}-\d{8}。这里\d后面的{2}({8})的意思是前面\d必须连续重复匹配2次(8次)。</p>
 <h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><p>现在你已经知道几个很有用的元字符了，如\b,.,<em>，还有\d.正则表达式里还有更多的元字符，比如\s匹配任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等。\w匹配字母或数字或下划线或汉字等。<br>下面来看看更多的例子：<br>\ba\w</em>\b匹配以字母a开头的单词——先是某个单词开始处(\b)，然后是字母a,然后是任意数量的字母或数字(\w<em>)，最后是单词结束处(\b)。<br>\d+匹配1个或更多连续的数字。这里的+是和</em>类似的元字符，不同的是*匹配重复任意次(可能是0次)，而+则匹配重复1次或更多次。<br>\b\w{6}\b 匹配刚好6个字符的单词。</p>
-<pre><code>| 代码        | 说明    |  
-| --------    | -----:  | 
-| .         | 匹配除换行符以外的任意字符      | 
-| \w        | 匹配字母或数字或下划线或汉字     |  
-| \s        | 匹配任意的空白符      | 
-| \d        | 匹配数字      | 
-| \b        | 匹配单词的开始或结束  | 
-| ^         | 匹配字符串的开始      | 
-| $         | 匹配字符串的结束      | 
-</code></pre><p>元字符^（和数字6在同一个键位上的符号）和$都匹配一个位置，这和\b有点类似。^匹配你要用来查找的字符串的开头，$匹配结尾。这两个代码在验证输入的内容时非常有用，比如一个网站如果要求你填写的QQ号必须为5位到12位数字时，可以使用：^\d{5,12}$。<br>这里的{5,12}和前面介绍过的{2}是类似的，只不过{2}匹配只能不多不少重复2次，{5,12}则是重复的次数不能少于5次，不能多于12次，否则都不匹配。<br>因为使用了^和$，所以输入的整个字符串都要用来和\d{5,12}来匹配，也就是说整个输入必须是5到12个数字，因此如果输入的QQ号能匹配这个正则表达式的话，那就符合要求了。<br>和忽略大小写的选项类似，有些正则表达式处理工具还有一个处理多行的选项。如果选中了这个选项，^和$的意义就变成了匹配行的开始处和结束处。</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td style="text-align:left">匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td>\w</td>
+<td style="text-align:left">匹配字母或数字或下划线或汉字</td>
+</tr>
+<tr>
+<td>\s</td>
+<td style="text-align:left">匹配任意的空白符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td style="text-align:left">匹配数字</td>
+</tr>
+<tr>
+<td>\b</td>
+<td style="text-align:left">匹配单词的开始或结束</td>
+</tr>
+<tr>
+<td>^</td>
+<td style="text-align:left">匹配字符串的开始</td>
+</tr>
+<tr>
+<td>$</td>
+<td style="text-align:left">匹配字符串的结束</td>
+</tr>
+</tbody>
+</table>
+<p>元字符^（和数字6在同一个键位上的符号）和$都匹配一个位置，这和\b有点类似。^匹配你要用来查找的字符串的开头，$匹配结尾。这两个代码在验证输入的内容时非常有用，比如一个网站如果要求你填写的QQ号必须为5位到12位数字时，可以使用：^\d{5,12}$。<br>这里的{5,12}和前面介绍过的{2}是类似的，只不过{2}匹配只能不多不少重复2次，{5,12}则是重复的次数不能少于5次，不能多于12次，否则都不匹配。<br>因为使用了^和$，所以输入的整个字符串都要用来和\d{5,12}来匹配，也就是说整个输入必须是5到12个数字，因此如果输入的QQ号能匹配这个正则表达式的话，那就符合要求了。<br>和忽略大小写的选项类似，有些正则表达式处理工具还有一个处理多行的选项。如果选中了这个选项，^和$的意义就变成了匹配行的开始处和结束处。</p>
 <h3 id="字符转义"><a href="#字符转义" class="headerlink" title="字符转义"></a>字符转义</h3><p>如果你想查找元字符本身的话，比如你查找.,或者<em>,就出现了问题：你没办法指定它们，因为它们会被解释成别的意思。这时你就得使用\来取消这些字符的特殊意义。因此，你应该使用.和\</em>。当然，要查找\本身，你也得用\.<br>例如：deerchao.net匹配deerchao.net，C:\Windows匹配C:\Windows。</p>
 <h3 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h3><p>你已经看过了前面的<em>,+,{2},{5,12}这几个匹配重复的方式了。下面是正则表达式中所有的限定符(指定数量的代码，例如</em>,{5,12}等)：</p>
 <pre><code>| 代码        | 说明    |  
@@ -66,4 +95,4 @@
 &lt;\/\1&gt;  # 查找尖括号括起来的内容：前面是一个&quot;/&quot;，后面是先前捕获的标签
 )       # 后缀结束
 </code></pre><h3 id="贪婪与懒惰"><a href="#贪婪与懒惰" class="headerlink" title="贪婪与懒惰"></a>贪婪与懒惰</h3><p>当正则表达式中包含能接受重复的限定符时，通常的行为是（在使整个表达式能得到匹配的前提下）匹配尽可能多的字符。以这个表达式为例：a.<em>b，它将会匹配最长的以a开始，以b结束的字符串。如果用它来搜索aabab的话，它会匹配整个字符串aabab。这被称为贪婪匹配。<br>有时，我们更需要懒惰匹配，也就是匹配尽可能少的字符。前面给出的限定符都可以被转化为懒惰匹配模式，只要在它后面加上一个问号?。这样.</em>?就意味着匹配任意数量的重复，但是在能使整个匹配成功的前提下使用最少的重复。现在看看懒惰版的例子吧：<br>a.*?b匹配最短的，以a开始，以b结束的字符串。如果把它应用于aabab的话，它会匹配aab（第一到第三个字符）和ab（第四到第五个字符）。</p>
-</div><div class="tags"><a href="/tags/library/">library</a></div><div class="post-share"></div><div class="post-nav"><a href="/2017/07/16/sass和stylus对比介绍/" class="next">sass和stylus对比介绍</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元字符"><span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符转义"><span class="toc-text">字符转义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重复"><span class="toc-text">重复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符类"><span class="toc-text">字符类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支条件"><span class="toc-text">分支条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分组"><span class="toc-text">分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反义"><span class="toc-text">反义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后向引用"><span class="toc-text">后向引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#零宽断言"><span class="toc-text">零宽断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#负向零宽断言"><span class="toc-text">负向零宽断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贪婪与懒惰"><span class="toc-text">贪婪与懒惰</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/正则表达式鸟瞰/">正则表达式鸟瞰</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/sass和stylus对比介绍/">sass和stylus对比介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/lodash/">lodash</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/cygwin常用命令收集/">cygwin常用命令收集</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/library/" style="font-size: 15px;">library</a> <a href="/tags/cli/" style="font-size: 15px;">cli</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://ruyuanyuan.github.io" title="oo" target="_blank">oo</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">海阔天空.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script></body></html>
+</div><div class="tags"><a href="/tags/library/">library</a></div><div class="post-share"></div><div class="post-nav"><a href="/2017/07/16/sass和stylus对比介绍/" class="next">sass和stylus对比介绍</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元字符"><span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符转义"><span class="toc-text">字符转义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重复"><span class="toc-text">重复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符类"><span class="toc-text">字符类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支条件"><span class="toc-text">分支条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分组"><span class="toc-text">分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反义"><span class="toc-text">反义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后向引用"><span class="toc-text">后向引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#零宽断言"><span class="toc-text">零宽断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#负向零宽断言"><span class="toc-text">负向零宽断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贪婪与懒惰"><span class="toc-text">贪婪与懒惰</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/正则表达式鸟瞰/">正则表达式鸟瞰</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/sass和stylus对比介绍/">sass和stylus对比介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/lodash/">lodash</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/cygwin常用命令收集/">cygwin常用命令收集</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/cli/" style="font-size: 15px;">cli</a> <a href="/tags/library/" style="font-size: 15px;">library</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://ruyuanyuan.github.io" title="oo" target="_blank">oo</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">海阔天空.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script></body></html>
