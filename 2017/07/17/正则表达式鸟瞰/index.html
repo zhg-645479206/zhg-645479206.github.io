@@ -234,4 +234,200 @@
 <p>有时，我们更需要懒惰匹配，也就是匹配尽可能少的字符。前面给出的限定符都可以被转化为懒惰匹配模式，只要在它后面加上一个问号?。这样.*</p>
 <p>?就意味着匹配任意数量的重复，但是在能使整个匹配成功的前提下使用最少的重复。现在看看懒惰版的例子吧：</p>
 <p>a.*?b匹配最短的，以a开始，以b结束的字符串。如果把它应用于aabab的话，它会匹配aab（第一到第三个字符）和ab（第四到第五个字符）。</p>
-</div><div class="tags"><a href="/tags/library/">library</a></div><div class="post-share"></div><div class="post-nav"><a href="/2017/07/16/sass和stylus对比介绍/" class="next">sass和stylus对比介绍</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元字符"><span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符转义"><span class="toc-text">字符转义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重复"><span class="toc-text">重复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符类"><span class="toc-text">字符类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支条件"><span class="toc-text">分支条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分组"><span class="toc-text">分组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反义"><span class="toc-text">反义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后向引用"><span class="toc-text">后向引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#零宽断言"><span class="toc-text">零宽断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#负向零宽断言"><span class="toc-text">负向零宽断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注释"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贪婪与懒惰"><span class="toc-text">贪婪与懒惰</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/正则表达式鸟瞰/">正则表达式鸟瞰</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/sass和stylus对比介绍/">sass和stylus对比介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/lodash/">lodash</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/cygwin常用命令收集/">cygwin常用命令收集</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/cli/" style="font-size: 15px;">cli</a> <a href="/tags/library/" style="font-size: 15px;">library</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://ruyuanyuan.github.io" title="oo" target="_blank">oo</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">海阔天空.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script></body></html>
+<table>
+<thead>
+<tr>
+<th>代码/语法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*?</td>
+<td style="text-align:left">重复任意次，但尽可能少重复</td>
+</tr>
+<tr>
+<td>+?</td>
+<td style="text-align:left">重复1次或更多次，但尽可能少重复</td>
+</tr>
+<tr>
+<td>??</td>
+<td style="text-align:left">重复0次或1次，但尽可能少重复</td>
+</tr>
+<tr>
+<td>{n,m}?</td>
+<td style="text-align:left">重复n到m次，但尽可能少重复</td>
+</tr>
+<tr>
+<td>{n,}?</td>
+<td style="text-align:left">重复n次以上，但尽可能少重复</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="处理选项"><a href="#处理选项" class="headerlink" title="处理选项"></a>处理选项</h2><p><br><br>上面介绍了几个选项如忽略大小写，处理多行等，这些选项能用来改变处理正则表达式的方式。下面是.Net中常用的正则表达式选项：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IgnoreCase(忽略大小写)</td>
+<td style="text-align:center">匹配时不区分大小写。</td>
+</tr>
+<tr>
+<td>Multiline(多行模式)</td>
+<td style="text-align:center">更改^和$的含义，使它们分别在任意一行的行首和行尾匹配，而不仅仅在整个字符串的开头和结尾匹配。(在此模式下,$的精确含意是:匹配\n之前的位置以及字符串结束前的位置.)</td>
+</tr>
+<tr>
+<td>Singleline(单行模式)</td>
+<td style="text-align:center">更改.的含义，使它与每一个字符匹配（包括换行符\n）。</td>
+</tr>
+<tr>
+<td>IgnorePatternWhitespace(忽略空白)</td>
+<td style="text-align:center">忽略表达式中的非转义空白并启用由#标记的注释。</td>
+</tr>
+<tr>
+<td>ExplicitCapture(显式捕获)</td>
+<td style="text-align:center">仅捕获已被显式命名的组。</td>
+</tr>
+</tbody>
+</table>
+<p>一个经常被问到的问题是：是不是只能同时使用多行模式和单行模式中的一种？答案是：不是。这两个选项之间没有任何关系，除了它们的名字比较相似（以至于让人感到疑惑）以外。</p>
+<hr>
+<p>##平衡组/递归匹配<br><br><br>有时我们需要匹配像( 100 * ( 50 + 15 ) )这样的可嵌套的层次性结构，这时简单地使用(.+)则只会匹配到最左边的左括号和最右边的右括号之间的内容(这里我们讨论的是贪婪模式，懒惰模式也有下面的问题)。假如原来的字符串里的左括号和右括号出现的次数不相等，比如( 5 / ( 3 + 2 ) ) )，那我们的匹配结果里两者的个数也不会相等。有没有办法在这样的字符串里匹配到最长的，配对的括号之间的内容呢？</p>
+<p>为了避免(和(把你的大脑彻底搞糊涂，我们还是用尖括号代替圆括号吧。现在我们的问题变成了如何把xx <aa <bbb=""> <bbb> aa&gt; yy这样的字符串里，最长的配对的尖括号内的内容捕获出来？</bbb></aa></p>
+<p>这里需要用到以下的语法构造：</p>
+<ul>
+<li>(?’group’) 把捕获的内容命名为group,并压入堆栈(Stack)</li>
+<li>(?’-group’) 从堆栈上弹出最后压入堆栈的名为group的捕获内容，如果堆栈本来为空，则本分组的匹配失败</li>
+<li>(?(group)yes|no) 如果堆栈上存在以名为group的捕获内容的话，继续匹配yes部分的表达式，否则继续匹配no部分</li>
+<li>(?!) 零宽负向先行断言，由于没有后缀表达式，试图匹配总是失败</li>
+</ul>
+<p>我们需要做的是每碰到了左括号，就在压入一个”Open”,每碰到一个右括号，就弹出一个，到了最后就看看堆栈是否为空－－如果不为空那就证明左括号比右括号多，那匹配就应该失败。正则表达式引擎会进行回溯(放弃最前面或最后面的一些字符)，尽量使整个表达式得到匹配。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;                         <span class="comment">#最外层的左括号</span></div><div class="line">    [^&lt;&gt;]*                <span class="comment">#最外层的左括号后面的不是括号的内容</span></div><div class="line">    (</div><div class="line">        (</div><div class="line">            (?<span class="string">'Open'</span>&lt;)    <span class="comment">#碰到了左括号，在黑板上写一个"Open"</span></div><div class="line">            [^&lt;&gt;]*       <span class="comment">#匹配左括号后面的不是括号的内容</span></div><div class="line">        )+</div><div class="line">        (</div><div class="line">            (?<span class="string">'-Open'</span>&gt;)   <span class="comment">#碰到了右括号，擦掉一个"Open"</span></div><div class="line">            [^&lt;&gt;]*        <span class="comment">#匹配右括号后面不是括号的内容</span></div><div class="line">        )+</div><div class="line">    )*</div><div class="line">    (?(Open)(?!))         <span class="comment">#在遇到最外层的右括号前面，判断黑板上还有没有没擦掉的"Open"；如果还有，则匹配失败</span></div><div class="line"></div><div class="line">&gt;                         <span class="comment">#最外层的右括号</span></div></pre></td></tr></table></figure>
+<p>平衡组的一个最常见的应用就是匹配HTML,下面这个例子可以匹配嵌套的<div>标签：<div[^>]<em>&gt;[^&lt;&gt;]</em>(((?’Open’<div[^>]<em>&gt;)[^&lt;&gt;]</em>)+((?’-Open’</div[^></div[^></div>)[^&lt;&gt;]<em>)+)</em>(?(Open)(?!)).</p>
+<p><strong>未提到的元素的列表，包含语法和简单的说明查看<a href="https://msdn.microsoft.com/zh-cn/library/az24scfc.aspx" target="_blank" rel="external">关于正则表达式语言元素的MSDN在线文档</a>。</strong></p>
+<table>
+<thead>
+<tr>
+<th>代码/语法</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\a</td>
+<td style="text-align:center">报警字符(打印它的效果是电脑嘀一声)</td>
+</tr>
+<tr>
+<td>\b</td>
+<td style="text-align:center">通常是单词分界位置，但如果在字符类里使用代表退格</td>
+</tr>
+<tr>
+<td>\t</td>
+<td style="text-align:center">制表符，Tab</td>
+</tr>
+<tr>
+<td>\r</td>
+<td style="text-align:center">回车</td>
+</tr>
+<tr>
+<td>\v</td>
+<td style="text-align:center">竖向制表符</td>
+</tr>
+<tr>
+<td>\f</td>
+<td style="text-align:center">换页符</td>
+</tr>
+<tr>
+<td>\n</td>
+<td style="text-align:center">换行符</td>
+</tr>
+<tr>
+<td>\e</td>
+<td style="text-align:center">Escape</td>
+</tr>
+<tr>
+<td>\0nn</td>
+<td style="text-align:center">ASCII代码中八进制代码为nn的字符</td>
+</tr>
+<tr>
+<td>\xnn</td>
+<td style="text-align:center">ASCII代码中十六进制代码为nn的字符</td>
+</tr>
+<tr>
+<td>\unnnn</td>
+<td style="text-align:center">Unicode代码中十六进制代码为nnnn的字符</td>
+</tr>
+<tr>
+<td>\cN</td>
+<td style="text-align:center">ASCII控制字符。比如\cC代表Ctrl+C</td>
+</tr>
+<tr>
+<td>\A</td>
+<td style="text-align:center">字符串开头(类似^，但不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td>\Z</td>
+<td style="text-align:center">字符串结尾或行尾(不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td>\z</td>
+<td style="text-align:center">字符串结尾(类似$，但不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td>\G</td>
+<td style="text-align:center">当前搜索的开头</td>
+</tr>
+<tr>
+<td>\p{name}</td>
+<td style="text-align:center">Unicode中命名为name的字符类，例如\p{IsGreek}</td>
+</tr>
+<tr>
+<td>(?&gt;exp)</td>
+<td style="text-align:center">贪婪子表达式</td>
+</tr>
+<tr>
+<td>(?<x>-<y>exp)</y></x></td>
+<td style="text-align:center">平衡组</td>
+</tr>
+<tr>
+<td>(?im-nsx:exp)</td>
+<td style="text-align:center">在子表达式exp中改变处理选项</td>
+</tr>
+<tr>
+<td>(?im-nsx)</td>
+<td style="text-align:center">为表达式后面的部分改变处理选项</td>
+</tr>
+<tr>
+<td>(?(exp)yes</td>
+<td style="text-align:center">no)</td>
+<td>把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</td>
+</tr>
+<tr>
+<td>(?(exp)yes)</td>
+<td style="text-align:center">同上，只是使用空表达式作为no</td>
+</tr>
+<tr>
+<td>(?(name)yes</td>
+<td style="text-align:center">no)</td>
+<td>如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no</td>
+</tr>
+<tr>
+<td>(?(name)yes)</td>
+<td style="text-align:center">同上，只是使用空表达式作为no</td>
+</tr>
+</tbody>
+</table>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://item.jd.com/11070361.html" target="_blank" rel="external">精通正则表达式(第3版)</a></li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/hs600312.aspx" target="_blank" rel="external">微软的正则表达式教程</a></li>
+<li><a href="http://msdn2.microsoft.com/zh-cn/library/system.text.regularexpressions.regex.aspx" target="_blank" rel="external">System.Text.RegularExpressions.Regex类(MSDN)</a></li>
+<li><a href="http://www.regular-expressions.info/" target="_blank" rel="external">专业的正则表达式教学网站(英文)</a></li>
+<li><a href="https://weblogs.asp.net/whaggard/377025" target="_blank" rel="external">关于.Net下的平衡组的详细讨论（英文</a></li>
+</ul>
+</div><div class="tags"><a href="/tags/library/">library</a></div><div class="post-share"></div><div class="post-nav"><a href="/2017/07/16/sass和stylus对比介绍/" class="next">sass和stylus对比介绍</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元字符"><span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符转义"><span class="toc-text">字符转义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重复"><span class="toc-text">重复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符类"><span class="toc-text">字符类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支条件"><span class="toc-text">分支条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分组"><span class="toc-text">分组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反义"><span class="toc-text">反义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后向引用"><span class="toc-text">后向引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#零宽断言"><span class="toc-text">零宽断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#负向零宽断言"><span class="toc-text">负向零宽断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注释"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贪婪与懒惰"><span class="toc-text">贪婪与懒惰</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理选项"><span class="toc-text">处理选项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/正则表达式鸟瞰/">正则表达式鸟瞰</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/sass和stylus对比介绍/">sass和stylus对比介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/lodash/">lodash</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/cygwin常用命令收集/">cygwin常用命令收集</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/cli/" style="font-size: 15px;">cli</a> <a href="/tags/library/" style="font-size: 15px;">library</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://ruyuanyuan.github.io" title="oo" target="_blank">oo</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">海阔天空.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script></body></html>
